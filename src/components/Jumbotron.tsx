@@ -5,7 +5,7 @@ const Jumbotron = () => {
     <section className=" px-4 py-16 md:py-24">
       <div className="container m-auto">
         <div className=" grid grid-cols-1 md:grid-cols-2">
-          <div className="flex items-center px-8 pl-[200px]">
+          <div className="flex items-center md:px-8 md:pl-[200px]">
             <div className="space-y-4 ">
               <p className="font-semibold ">Hey, I am Gigih Rahmandita</p>
               <p className="text-4xl font-semibold md:text-5xl">
