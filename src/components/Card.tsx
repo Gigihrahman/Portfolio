@@ -1,9 +1,16 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface CardProps {
   i: number;
@@ -42,44 +49,143 @@ const Card: React.FC<CardProps> = ({
       className="cardContainer h-screen flex items-center justify-center sticky top-0"
     >
       <motion.div
-        className="card flex flex-col relative h-[500px] w-[1000px] rounded-3xl p-12"
+        className="card flex flex-col relative h-[500px] w-[1000px] rounded-3xl p-12 xl:h-[500px] xl:w-[1000px] lg:h-[450px] lg:w-[900px] md:h-[400px] md:w-[800px] sm:h-[350px] sm:w-[90%] sm:p-6"
         style={{
           scale,
           backgroundColor: color,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
       >
-        <h2 className="text-center m-0 text-2xl font-bold font-serif">
+        <h2 className="text-center m-0 text-2xl font-bold font-serif sm:text-lg">
           {title}
         </h2>
-        <div className="flex h-full mt-12 gap-12">
-          <div className="desc w-[40%] relative top-[10%]">
-            <p className="text-base first-letter:text-2xl">{description}</p>
-            <span className="flex items-center gap-1">
-              <Link
-                href={link}
-                target="_blank"
-                className="text-xs underline cursor-pointer"
-              >
-                See more
-              </Link>
-              <svg
-                width="22"
-                height="12"
-                viewBox="0 0 22 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M21.5303 6.53033C21.8232 6.23744 21.8232 5.76256 21.5303 5.46967L16.7574 0.696699C16.4645 0.403806 15.9896 0.403806 15.6967 0.696699C15.4038 0.989592 15.4038 1.46447 15.6967 1.75736L19.9393 6L15.6967 10.2426C15.4038 10.5355 15.4038 11.0104 15.6967 11.3033C15.9896 11.5962 16.4645 11.5962 16.7574 11.3033L21.5303 6.53033ZM0 6.75L21 6.75V5.25L0 5.25L0 6.75Z"
-                  fill="black"
-                />
-              </svg>
+
+        {/* Mobile layout - Image first, then description */}
+        <div className="flex flex-col h-full mt-8 gap-4 lg:hidden">
+          {/* Image for mobile */}
+          <div className="imgContainer relative w-full h-[55%] rounded-2xl overflow-hidden">
+            <motion.div style={{ scale: imageScale }} className="w-full h-full">
+              <Image fill src={src} alt={title} className="object-cover" />
+            </motion.div>
+          </div>
+
+          {/* Description for mobile */}
+          <div className="desc w-full text-sm">
+            <p className="text-sm first-letter:text-xl line-clamp-1">
+              {description}
+            </p>
+            <span className="flex items-center gap-1 mt-2">
+              <Dialog>
+                <DialogTrigger className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-black text-white hover:bg-black/90 transition-colors text-xs">
+                  Visit Website
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 17L17 7M17 7H7M17 7V17"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </DialogTrigger>
+                <DialogContent className="max-w-5xl w-[90vw] max-h-[90vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-serif">
+                      {title}
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="overflow-hidden rounded-lg h-64 md:h-80 lg:h-96">
+                      <Image
+                        src={src}
+                        alt={title}
+                        width={600}
+                        height={400}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-between">
+                      <DialogDescription className="text-base md:text-lg space-y-4 max-h-64 md:max-h-80 lg:max-h-96 overflow-y-auto pr-2">
+                        {description.split("\n\n").map((paragraph, index) => (
+                          <p key={index}>{paragraph}</p>
+                        ))}
+                      </DialogDescription>
+                      {/* Visit website button removed */}
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </span>
           </div>
+        </div>
+
+        {/* Desktop layout - Side by side */}
+        <div className="hidden lg:flex h-full mt-12 gap-12 flex-row">
+          {/* Description */}
+          <div className="desc w-[40%] relative top-[10%] text-sm">
+            <p className="text-base first-letter:text-2xl line-clamp-3">
+              {description}
+            </p>
+            <span className="flex items-center gap-1">
+              <Dialog>
+                <DialogTrigger className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-black text-white hover:bg-black/90 transition-colors text-xs">
+                  Visit Website
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 17L17 7M17 7H7M17 7V17"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </DialogTrigger>
+                <DialogContent className="max-w-5xl w-[90vw] max-h-[90vh] overflow-y-auto">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-serif">
+                      {title}
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div className="overflow-hidden rounded-lg h-64 md:h-80 lg:h-96">
+                      <Image
+                        src={src}
+                        alt={title}
+                        width={600}
+                        height={400}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-between">
+                      <DialogDescription className="text-base md:text-lg space-y-4 max-h-64 md:max-h-80 lg:max-h-96 overflow-y-auto pr-2">
+                        {description.split("\n\n").map((paragraph, index) => (
+                          <p key={index}>{paragraph}</p>
+                        ))}
+                      </DialogDescription>
+                      {/* Visit website button removed */}
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </span>
+          </div>
+
+          {/* Image for desktop */}
           <div className="imgContainer relative w-[60%] h-full rounded-3xl overflow-hidden">
             <motion.div style={{ scale: imageScale }} className="w-full h-full">
-              <Image fill src={`${src}`} alt="image" className="object-cover" />
+              <Image fill src={src} alt={title} className="object-cover" />
             </motion.div>
           </div>
         </div>

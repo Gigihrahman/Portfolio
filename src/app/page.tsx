@@ -1,22 +1,22 @@
 "use client";
 import Aboutme from "@/components/Aboutme";
+import ContactMe from "@/components/Contactme";
 import MyExperience from "@/components/Experience";
 import Jumbotron from "@/components/Jumbotron";
 import MyPorto from "@/components/Myporto";
-import Testimonial from "@/components/Testimonial";
-import MySkill from "@/components/Myskill";
-import Coba from "@/components/Coba";
+import SkillsSection from "@/components/Myskill";
+import { Testimonial } from "@/components/Testimonial";
 
 export default function Home() {
   return (
     <div>
       <Jumbotron />
-      <MySkill />
+      <SkillsSection />
       <Aboutme />
       <MyPorto />
       <MyExperience />
       <Testimonial />
-      <Coba />
+      <ContactMe />
     </div>
   );
 }

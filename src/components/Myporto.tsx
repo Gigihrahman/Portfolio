@@ -24,9 +24,20 @@ export default function MyPorto() {
   }, []);
 
   return (
-    <div className="relative mt-[5vh]">
+    <div className="relative mt-[5vh]" id="portfolio">
+      {/* Sticky header container */}
+      <div className="sticky top-0 bg-white/90 backdrop-blur-sm py-4 z-10 shadow-sm">
+        <h2 className="text-3xl font-bold text-blue-600 uppercase tracking-wider font-sans mb-3 text-center">
+          My Portfolio
+        </h2>
+
+        <div className="bg-gray-100 border-l-4 border-blue-600 p-4 mb-2 italic text-gray-700 font-light text-lg max-w-lg mx-auto">
+          Showcasing my best work and projects
+        </div>
+      </div>
+
       {/* Projects wrapper */}
-      <div className="relative">
+      <div className="relative mt-6">
         {projects.map((project, index) => {
           const targetScale = 1 - (projects.length - index) * 0.05;
           return (

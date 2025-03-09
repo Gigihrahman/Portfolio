@@ -2,7 +2,7 @@ export const projects = [
   {
     title: "LetSea",
     description:
-      "Aplikasi ini memiliki 3 fitur yaitu fitur menampilkan data kapal, Tracking cargo, dan vessel detail. Pada proyek ini saya membangun rest api menggunakan node js, express js dan mysql",
+      "Proyek ini melibatkan pembuatan REST API dengan Node.js, Express.js, dan MySQL untuk menampilkan data kapal, melacak kargo, serta menampilkan detail kapal. Struktur proyek dirancang dengan pemisahan rute dan koneksi basis data terpusat. Alhasil, sistem menjadi responsif, mudah terintegrasi, dan efektif untuk mengelola data perusahaan.",
     src: "/letsea.svg",
     link: "/letsea.svg",
     color: "#BBACAF",
@@ -10,7 +10,7 @@ export const projects = [
   {
     title: "Ngado Kado",
     description:
-      "Ini adalah e-commerce yang menjual parfum, disini terdapat integrasi dengan raja ongkir API untuk mengambil data harga ongkos kirim dan menggunakan payment gateway midtrans",
+      "Proyek ini menghadirkan e-commerce parfum dengan integrasi API RajaOngkir untuk menghitung ongkos kirim dan Midtrans sebagai payment gateway, dibangun menggunakan Node.js serta Express.js. Pelanggan dapat memilih berbagai metode pembayaran, seperti kartu kredit, transfer bank, dan e-wallet, serta melihat estimasi biaya pengiriman dari berbagai ekspedisi.",
     src: "/ngado.svg",
     link: "/ngado.svg",
     color: "#C2491D",
@@ -18,7 +18,7 @@ export const projects = [
   {
     title: "Sistem Informasi Poliklinik ",
     description:
-      "Though he views photography as a medium for storytelling, Zissou’s images don’t insist on a narrative. Both crisp and ethereal, they’re encoded with an ambiguity—a certain tension—that lets the viewer find their own story within them.",
+      "Proyek ini menciptakan sistem informasi poliklinik berbasis web yang menampilkan jadwal periksa, harga obat, dan jadwal dokter secara real-time. Dokter dapat mengubah jadwal praktik sesuai kebutuhan, sementara pasien mengisi riwayat penyakit sebelum pemeriksaan. Hasilnya, manajemen jadwal lebih efisien dan informasi pasien lebih akurat.",
     src: "/sipoliklinik.svg",
     link: "https://www.ignant.com/2023/10/28/capturing-balis-many-faces-zissou-documents-the-sacred-and-the-mundane-of-a-fragile-island/",
     color: "#977F6D",
