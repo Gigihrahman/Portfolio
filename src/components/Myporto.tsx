@@ -1,6 +1,6 @@
 "use client";
 import Card from "@/components/Card";
-import { projects } from "./data";
+import { projects } from "../lib/data";
 import { useScroll } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";

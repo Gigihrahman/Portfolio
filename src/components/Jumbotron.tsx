@@ -54,8 +54,9 @@ const Jumbotron = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Suspendisse varius enim in eros elementum tristique.
+                I’m a Full Stack Developer who helps bring your web ideas to
+                life with Next.js, React, Golang, TypeScript, JavaScript, PHP,
+                and DevOps expertise.
               </motion.p>
 
               <motion.div
